@@ -1,0 +1,7 @@
+/////////////////// Veri Tabanı ve Site Konfigürasyonu ////////////////////
+
+config/default.php dosyasında
+
+->  define('SITE_URL','https://localhost') parametresinde site Urlnizi belirleyin
+
+-> Aynı dosyadaki veritabanı bilgilerini düzeltin
