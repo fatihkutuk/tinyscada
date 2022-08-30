@@ -314,7 +314,8 @@ readers do not read off random characters that represent icons */
 
 .fa-app-store-ios:before {
   content: "\f370"; }
-
+.fa-bolt-slash:before {
+    content: "\e0b8"; }
 .fa-apper:before {
   content: "\f371"; }
 

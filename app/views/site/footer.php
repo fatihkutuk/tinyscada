@@ -68,12 +68,11 @@ if(window.location=="<?=SITE_URL;?>/"){
 
 }
 var nodes = <?=json_encode($params['serinolist']);?>;
-console.log(nodes);
-for (d in nodes){
-  console.log(nodes[d]);
-}
+
 
 </script>
+<script src="<?= DIST_PATH; ?>/js/tinyscada.js"></script>
+
 </body>
 
 </html>

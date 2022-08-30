@@ -40,9 +40,11 @@
                   </p>
                   <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold tag" id="sicaklik-<?=$item['nodeSerialNumber']?>">
-                      23
+                        Tanımsız
                     </span>
-                    <span class="text-muted">Sıcaklık</span>
+                    <span class="text-muted" id="title-sicaklik-<?=$item['nodeSerialNumber']?>">
+                      
+                  </span>
                   </p>
                 </div>
 
@@ -53,9 +55,9 @@
                   </p>
                   <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold tag" id="nem-<?=$item['nodeSerialNumber']?>">
-                      0.8%
+                    Tanımsız
                     </span>
-                    <span class="text-muted">Nem</span>
+                    <span class="text-muted" id="title-nem-<?=$item['nodeSerialNumber']?>"></span>
                   </p>
                 </div>
 
@@ -66,11 +68,11 @@
                   </p>
                   <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold">
-                      <a class="btn btn-app writetag" id="do1-<?=$item['nodeSerialNumber']?>">
-                        <i class="fas fa-pause"></i> Aç
+                      <a class="btn btn-app writetag" id="color-do1-<?=$item['nodeSerialNumber']?>">
+                        <i class="fas fa-ban" id="icon-do1-<?=$item['nodeSerialNumber']?>"></i> 
                       </a>
                     </span>
-                    <span class="text-muted">Dijital Çıkış 1</span>
+                    <span class="text-muted" id="title-do1-<?=$item['nodeSerialNumber']?>"></span>
                   </p>
                 </div>
 
@@ -79,10 +81,10 @@
                     <i class="fas fa-wave-square"></i>
                   </p>
                   <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold tag" id="di-<?=$item['nodeSerialNumber']?>">
-                      <i class="fas fa-toggle-off"></i>
+                    <span class="font-weight-bold tag" id="color-di1-<?=$item['nodeSerialNumber']?>">
+                      <i class="fas fa-ban" id="icon-di1-<?=$item['nodeSerialNumber']?>"></i>
                     </span>
-                    <span class="text-muted">Dijital Giriş 1</span>
+                    <span class="text-muted" id="title-di1-<?=$item['nodeSerialNumber']?>"></span>
                   </p>
                 </div>
 
@@ -91,11 +93,11 @@
                     <i class="fas fa-wave-square"></i>
                   </p>
                   <p class="d-flex flex-column text-right">
-                    <span class="font-weight-bold text-success tag" id="di1-<?=$item['nodeSerialNumber']?>">
-                      <i class="fas fa-toggle-on"></i>
+                  <span class="font-weight-bold tag" id="color-di2-<?=$item['nodeSerialNumber']?>">
+                      <i class="fas fa-ban" id="icon-di2-<?=$item['nodeSerialNumber']?>"></i>
 
                     </span>
-                    <span class="text-muted">Dijital Giriş 2</span>
+                    <span class="text-muted" id="title-di2-<?=$item['nodeSerialNumber']?>"></span>
                   </p>
                 </div>
 
