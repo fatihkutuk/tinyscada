@@ -9,6 +9,7 @@ class login extends controller
     }
     public function loginControl()
     {
+        
         if ($_POST['userMail'] and $_POST['userPassword']) {
             
             $userMail = helper::cleaner($_POST['userMail']);
