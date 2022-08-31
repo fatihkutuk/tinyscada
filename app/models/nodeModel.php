@@ -11,6 +11,12 @@ class nodeModel extends model {
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    public function updateNodeIpBySerialNumber($serialNumber,$localip){
+        $_SERVER["REMOTE_ADDR"];
+        $query = $this->db->prepare('update node set externalp = "'.$_SERVER["REMOTE_ADDR"].'", localIp = "'.$localip.'" where nodeSerialNumber = '.$serialNumber.'');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getTagPool(){
         $query = $this->db->prepare('select * from tagpool');
         $query->execute();
@@ -21,8 +27,13 @@ class nodeModel extends model {
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function saveNodeValue($serialNumber,$tagName,$tagValue){
-        $query = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'$tagName',$tagValue)");
+    public function saveNodeValue($serialNumber,$di1,$di2,$do1,$sicaklik,$nem){
+        $query = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values 
+        ($serialNumber,'di1',$di1),
+        ($serialNumber,'di2',$di2),
+        ($serialNumber,'do1',$do1),
+        ($serialNumber,'sicaklik',$sicaklik),
+        ($serialNumber,'nem',$nem)");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
