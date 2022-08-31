@@ -2,7 +2,7 @@
 
 class nodeModel extends model {
     public function getNodes(){
-        $query = $this->db->prepare('select * from node');
+        $query = $this->db->prepare('select * from node where userId = '.$_SESSION["id"].' ');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -22,7 +22,7 @@ class nodeModel extends model {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     public function saveNodeValue($serialNumber,$tagName,$tagValue){
-        $query = $this->db->prepare("insert into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'$tagName',$tagValue)");
+        $query = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'$tagName',$tagValue)");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
