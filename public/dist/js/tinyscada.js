@@ -4,7 +4,6 @@ function getTagValues(){
         url:  "/nodes/getTagValues?serialnolist="+nodes,
         dataType: "json",
         success: function(data){
-            console.log(data);
             for(d in data){
                 var tagid = "#"+data[d]["tagName"]+"-"+data[d]["serialNumber"];
                 var titleid = "#title-"+data[d]["tagName"]+"-"+data[d]["serialNumber"];
@@ -21,7 +20,6 @@ function getTagValues(){
             }
         },
         error: function(){
-            console.log("error")
         }
     })
 }
