@@ -68,7 +68,7 @@
                   </p>
                   <p class="d-flex flex-column text-right">
                     <span class="font-weight-bold">
-                      <a class="btn btn-app writetag" id="color-do1-<?=$item['nodeSerialNumber']?>">
+                      <a class="btn btn-app writetag" data-val=""  onclick="setBool(<?=$item['nodeSerialNumber']?>,'do1',this)" id="color-do1-<?=$item['nodeSerialNumber']?>">
                         <i class="fas fa-ban" id="icon-do1-<?=$item['nodeSerialNumber']?>"></i> 
                       </a>
                     </span>

@@ -1,3 +1,4 @@
+var do1;
 function getTagValues(){
     $.ajax({
         type: "GET",
@@ -38,6 +39,7 @@ function updateToggleValues(colorid,iconid,titleid,value,title,unit){
         $(iconid).removeClass('fa-toggle-off')
         $(iconid).removeClass('fa-ban')
         $(iconid).addClass('fa-toggle-on')
+        $(colorid).attr("data-val",1)
 
     }else{
         $(colorid).removeClass('text-success')
@@ -45,8 +47,43 @@ function updateToggleValues(colorid,iconid,titleid,value,title,unit){
         $(iconid).removeClass('fa-ban')
         $(iconid).removeClass('fa-toggle-on')
         $(iconid).addClass('fa-toggle-off')
+        $(colorid).attr("data-val",0)
+
+
+    }
+    if(value == do1){
+        $(colorid).css("opacity",1);
+
     }
     $(titleid).text(title)
+}
+function changedValue(e){
+    console.log(e)
+}
+function setBool(serino,tagname,e){
+    var val = $(e).attr("data-val") == 0 ? 1 : 0;
+    do1 = val;
+    $(e).css("opacity",0.5);
+    $(e).change(function(event) {
+        console.log("changed")
+         $(e).css("opacity",1);
+     });
+    var data = { 
+        serialNumber : serino,
+        tagName: tagname,
+        tagValue: val
+    };
+    $.ajax({
+        type: "POST",
+        url:  "/nodes/setBoolValues",
+        dataType: "json",
+        data: data,
+        success: function(data){
+
+        },
+        error: function(){
+        }
+    })
 }
 $(function() {
     getTagValues();

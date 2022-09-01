@@ -37,4 +37,21 @@ class nodeModel extends model {
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function tagsForWrite($serialNumber,$tagName){
+        $query = $this->db->prepare("select * from writedtags where serialNumber = ".$serialNumber." and tagName = '".$tagName."' ");
+        $query->execute();
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    public function deletAfterRead($serialNumber,$tagName){
+        $query = $this->db->prepare("delete  from writedtags where serialNumber = ".$serialNumber." and tagName = '".$tagName."' ");
+        $query->execute();
+    }
+    public function setBoolValues($serino,$tagName,$tagValue){
+        $query = $this->db->prepare("replace into writedtags (serialNumber,tagName,tagValue) values ($serino,'$tagName',$tagValue)");
+        $query->execute();
+        //exit(var_dump($query));
+        if($query){
+            return true;
+        }
+    }
 }
