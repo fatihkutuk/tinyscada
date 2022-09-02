@@ -34,6 +34,33 @@ class user extends controller
         $this->render('user/edit',['user'=>$user,'userRoles'=>$userRoles]);
         $this->render('site/footer');
     }
+    public function register()
+    {
+        if ($_POST) {
+            $name = $_POST['name'];
+            $surname = $_POST['surname'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $tel = $_POST['tel'];
+            $rePassword = $_POST['rePassword'];
+            if(!$this->model('userModel')->isExist($tel,$email)){
+                $hash = hash('sha256',$password);
+                $save = $this->model('userModel')->create($name,$surname,$password,$email,$tel,$hash);
+                if($save){
+                    $send = helper::sendAuthMail($hash,$email,$name,$surname,$password,'Hesap Onayı','Hesabınızı Onaylayın');
+                    exit($send);
+                    helper::flashData("statu","danger");
+                    helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
+                    Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
+                    helper::redirect("/login/confirm",["email" => $_POST["email"]]);
+                }
+            }else{
+                helper::flashData("statu","danger");
+                helper::flashData("message","Bu bilgilere ait kullanıcı var.");
+                helper::redirect("/main/register");
+            }
+        }
+    }
     public function profile()
     {
         if (!$this->sessionManager->isLogged()){helper::redirect('/login');die();}

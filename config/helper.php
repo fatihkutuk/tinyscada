@@ -117,25 +117,25 @@ class helper extends model
         }
 
     }
-    static function sendAuthMail($userName,$authenticationCode,$userMail,$name,$surName,$userPassword,$subject,$message)
+    static function sendAuthMail($authenticationCode,$userMail,$name,$surName,$userPassword,$subject,$message)
     {
 
             $mail = new PHPMailer();
             $mail->IsSMTP();
             $mail->SMTPAuth = true;
-            $mail->Host = 'smtp.yandex.com.tr';
-            $mail->Port = 465;
-            $mail->SMTPSecure = 'ssl';
-            $mail->Username = 'fatih.kutuk@envest.com.tr';
-            $mail->Password = 'fth.ktk.179';
-            $mail->SetFrom("fatih.kutuk@envest.com.tr", 'Envest Crypt');
+            $mail->Host = 'mail.tinyscada.com';
+            $mail->Port = 587;
+            $mail->SMTPSecure = 'STARTTLS';
+            $mail->Username = 'info@tinyscada.com';
+            $mail->Password = 'Fth.ktk.179';
+            $mail->SetFrom("info@tinyscada.com", 'test');
             $mail->AddAddress($userMail, $name.' '.$surName);
             $mail->CharSet = 'UTF-8';
             $mail->Subject = $subject;
             $content = $message.'<a href="'.SITE_URL.'/user/confirmAcount/'.$authenticationCode.'"> 
             Hesabınızı Bu Linkten Onaylayınız : </a><br> Link Üzerinden bağlantı kuramazsanız bu linki kopyalayıp tarayıcınızda 
             açın '.SITE_URL.'/user/confirmAcount/'.$authenticationCode.' <br><hr>
-            Kullanıcı Adınız: '.$userMail.' veya '.$userName.'<br> Default Şifreniz:'.$userPassword.'<hr>';
+            Kullanıcı Adınız: '.$userMail.' veya '.$name.'<br> Default Şifreniz:'.$userPassword.'<hr>';
             $mail->MsgHTML($content);
 
             if(!$mail->Send()){

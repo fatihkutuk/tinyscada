@@ -9,18 +9,18 @@ class login extends controller
     }
     public function loginControl()
     {
-        
+
         if ($_POST['userMail'] and $_POST['userPassword']) {
-            
+
             $userMail = helper::cleaner($_POST['userMail']);
             $userPassword = helper::cleaner($_POST['userPassword']);
 
             $query = $this->model('loginModel')->control($userMail, md5($userPassword));
             if ($query) {
 
-            
 
-                sessionManager::createSession(["name" => $query["name"],"id" => $query["id"], "surname" => $query["surname"]]);
+
+                sessionManager::createSession(["name" => $query["name"], "id" => $query["id"], "surname" => $query["surname"]]);
                 //exit(var_dump($_SESSION));
                 helper::redirect("/home");
                 helper::flashData("statu", "Giriş Başarılı");

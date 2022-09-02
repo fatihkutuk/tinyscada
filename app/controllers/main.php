@@ -17,5 +17,8 @@ class main extends controller
         $this->render("/home",['nodes' => $nodes]); 
         $this->render("site/footer",['serinolist' => $serinolist]);
     }
+    public function register(){
+        $this->render("login/register");
 
+    }
 }

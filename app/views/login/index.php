@@ -29,7 +29,10 @@
 
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Oturum Aç</button>
+                            <button type="submit" class="btn btn-primary btn-block">Giriş</button>
+                        </div>
+                        <div class="col-8">
+                            <a href="/main/register" type="submit" class="btn btn-success btn-block ">Kaydol</a>
                         </div>
                         <div class="alert alert-<?= @$_SESSION['statu']; ?>">
                             <?= @$_SESSION['message']; ?>

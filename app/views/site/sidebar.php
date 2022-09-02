@@ -46,7 +46,7 @@
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="index3.html" class="brand-link">
+      <a href="/" class="brand-link">
         <img src="<?= DIST_PATH; ?>/img/AdminLTELogo.png" alt="Tiny Scada" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Tiny Scada</span>
       </a>
