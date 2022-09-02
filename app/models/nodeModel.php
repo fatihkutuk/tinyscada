@@ -28,13 +28,12 @@ class nodeModel extends model {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     public function saveNodeValue($serialNumber,$di1,$di2,$do1,$sicaklik,$nem){
-        $query = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values 
-        ($serialNumber,'di1',$di1),
-        ($serialNumber,'di2',$di2),
-        ($serialNumber,'do1',$do1),
-        ($serialNumber,'sicaklik',$sicaklik),
-        ($serialNumber,'nem',$nem)");
-        $query->execute();
+
+        $query = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'di1',$di1),($serialNumber,'di2',$di2),
+        ($serialNumber,'do1',$do1);");
+        $query2 = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'sicaklik',$sicaklik);");
+        $query3 = $this->db->prepare("replace into readtags (serialNumber,tagName,tagValue) values ($serialNumber,'nem',$nem);");
+        $query->execute(); $query2->execute(); $query3->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     public function tagsForWrite($serialNumber,$tagName){

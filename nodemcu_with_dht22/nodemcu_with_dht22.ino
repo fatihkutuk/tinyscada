@@ -6,23 +6,27 @@
 #include <ArduinoJson.h>
 #include "DHT.h"   
 
+#define DHTTYPE DHT22 
+
 
 const char* ssid = "Koru1000";
 const char* password = "envest9arge13";
 String scada = "https://tinyscada.com/nodes/saveNodeValue";
 String do1GetEndpoint = "https://tinyscada.com/nodes/tagsForWrite";
+
 const int di1 = 5;
 const int di2 = 4;
 const int do1 = 0;
-
 #define DHTPIN 2
-#define DHTTYPE DHT11 
+
 DHT dht(DHTPIN, DHTTYPE); 
-ESP8266WebServer server(80);
+ESP8266WebServer server(5002);
+int chipid = ESP.getChipId();
 unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
 String page = "";
-int chipid = ESP.getChipId();
+
+
 String ipToString(IPAddress ip){
   String s="";
   for (int i=0; i<4; i++)
@@ -30,7 +34,6 @@ String ipToString(IPAddress ip){
   return s;
 }
 void sendData(){
-
     float h = dht.readHumidity();
     float t = dht.readTemperature(); 
     if(WiFi.status()== WL_CONNECTED){
@@ -84,7 +87,6 @@ void setup() {
     server.send(200, "text/html", page);
   });
   server.begin();
-
 
   pinMode(di1,INPUT);
   pinMode(di2,INPUT);

@@ -48,12 +48,9 @@ function updateToggleValues(colorid,iconid,titleid,value,title,unit){
         $(iconid).removeClass('fa-toggle-on')
         $(iconid).addClass('fa-toggle-off')
         $(colorid).attr("data-val",0)
-
-
     }
     if(value == do1){
         $(colorid).css("opacity",1);
-
     }
     $(titleid).text(title)
 }
