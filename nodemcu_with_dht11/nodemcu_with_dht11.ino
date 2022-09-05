@@ -109,5 +109,5 @@ void loop() {
   server.handleClient();
   sendData();
   getDo1();
-  delay(5000);
+  delay(2000);
 }
