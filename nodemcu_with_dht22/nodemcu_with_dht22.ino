@@ -5,21 +5,26 @@
 #include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 #include "DHT.h"   
-
 #define DHTTYPE DHT22 
+#include <Adafruit_Sensor.h>
 
 
-const char* ssid = "Koru1000";
-const char* password = "envest9arge13";
+
+const char* ssid = "fatihktk";
+const char* password = "fthktk179";
 String scada = "https://tinyscada.com/nodes/saveNodeValue";
 String do1GetEndpoint = "https://tinyscada.com/nodes/tagsForWrite";
 
 const int di1 = 5;
 const int di2 = 4;
 const int do1 = 0;
-#define DHTPIN 2
+#define DHTPIN 2    
 
-DHT dht(DHTPIN, DHTTYPE); 
+
+
+DHT dht(DHTPIN, DHTTYPE);
+float t = 0.0;
+float h = 0.0;
 ESP8266WebServer server(5002);
 int chipid = ESP.getChipId();
 unsigned long lastTime = 0;
@@ -34,8 +39,8 @@ String ipToString(IPAddress ip){
   return s;
 }
 void sendData(){
-    float h = dht.readHumidity();
-    float t = dht.readTemperature(); 
+     h = dht.readHumidity();
+     t = dht.readTemperature(); 
     if(WiFi.status()== WL_CONNECTED){
       WiFiClientSecure   client;
       HTTPClient http;
@@ -107,7 +112,8 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("di1 : "+String(digitalRead(di1))+" di2 : "+String(digitalRead(di2))+" do2 : "+String(digitalRead(do1))+" nem : "+String(dht.readHumidity())+" sicaklik : "+String(dht.readTemperature()));
+  Serial.println("CPU ID: "+chipid);
+  Serial.println("di1 : "+String(digitalRead(di1))+" di2 : "+String(digitalRead(di2))+" do2 : "+String(digitalRead(do1))+" nem : "+String(h)+" sicaklik : "+String(t));
   server.handleClient();
   sendData();
   getDo1();
