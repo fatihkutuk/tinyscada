@@ -15,7 +15,7 @@
 
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" data-widget="navbar-search" href="#" role="button">
             <i class="fas fa-search"></i>
           </a>
@@ -34,7 +34,7 @@
               </div>
             </form>
           </div>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -87,12 +87,12 @@
                 <p>Nodelar</p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?= SITE_URL ?>/logs" class="nav-link logs">
                 <i class="fas fa-chart-pie nav-icon"></i>
                 <p>Loglar</p>
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </nav>
