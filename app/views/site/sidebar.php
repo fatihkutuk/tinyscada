@@ -57,7 +57,7 @@
             <img src="<?= DIST_PATH; ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block"><?= $_SESSION["name"]; ?> <?= $_SESSION["surname"] ?></a>
+            <a href="#" class="d-block"><?= $_SESSION["name"]; ?> <?= $_SESSION["surname"]; ?></a>
           </div>
         </div>
 

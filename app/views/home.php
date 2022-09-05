@@ -18,19 +18,17 @@
       <div class="row">
         <?php foreach ($params['nodes'] as $key => $item) { ?>
           <div class="col-md-4">
-            <div class="card">
+            <div class="card card-warning">
               <div class="card-header border-0">
                 <h3 class="card-title"><?=$item['title']?></h3>
                 <div class="card-tools">
-                  <a href="#" class="btn btn-sm btn-tool">
+                  <a href="/nodes/settings/<?= $item["nodeSerialNumber"] ?>" class="btn btn-sm btn-tool">
                     <i class="fas fa-cog" title="Ayarlar"></i>
                   </a>
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-eye" title="Detay"></i>
+                  <a href="/nodes/update/<?= $item["nodeSerialNumber"] ?>" class="btn btn-sm btn-tool">
+                    <i class="fas fa-edit" title="Detay"></i>
                   </a>
-                  <a href="#" class="btn btn-sm btn-tool">
-                    <i class="fas fa-chart-pie" title="Log Grafikleri"></i>
-                  </a>
+
                 </div>
               </div>
               <div class="card-body">
