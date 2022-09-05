@@ -5,7 +5,7 @@ class user extends controller
     public function index()
     {
         if (!$this->sessionManager->isLogged()){helper::redirect('/login');die();}
-        if ($this->userInfo['userRoleId']!=1){helper::flashToastr("error","Bu Alanda İşlem Yapamazsınız","7000"); helper::redirect('/'); die();}
+        if ($this->userInfo['userRoleId']!=1){helper::flashToastr("alert alert-danger","error","Bu Alanda İşlem Yapamazsınız","7000"); helper::redirect('/'); die();}
 
         $users = $this->model('userModel')->listAllUsers();
         $this->render('site/header');
@@ -26,7 +26,7 @@ class user extends controller
     public function edit($userId)
     {
         if (!$this->sessionManager->isLogged()){helper::redirect('/login');die();}
-        if ($this->userInfo['userRoleId']!=1){helper::flashToastr("error","Bu Alana Yetkiniz Bulunmuyor","7000");helper::redirect('/user');die();}
+        if ($this->userInfo['userRoleId']!=1){helper::flashToastr("alert alert-danger", "Hata","Yetkisiz İşlem","7000");helper::redirect('/user');die();}
         $user = $this->model('userModel')->singleUserData($userId);
         $userRoles = $this->model("userModel")->listAllUserRoles();
         $this->render('site/header');
@@ -43,22 +43,29 @@ class user extends controller
             $email = $_POST['email'];
             $tel = $_POST['tel'];
             $rePassword = $_POST['rePassword'];
-            if(!$this->model('userModel')->isExist($tel,$email)){
-                $hash = hash('sha256',$password);
-                $save = $this->model('userModel')->create($name,$surname,$password,$email,$tel,$hash);
-                if($save){
-                    $send = helper::sendAuthMail($hash,$email,$name,$surname,$password,'Hesap Onayı','Hesabınızı Onaylayın');
-                    exit($send);
+            if( $password==$rePassword ){
+                if(!$this->model('userModel')->isExist($tel,$email)){
+                    $hash = hash('sha256',$password);
+                    $save = $this->model('userModel')->create($name,$surname,$password,$email,$tel,$hash);
+                    if($save){
+                        $send = helper::sendAuthMail($hash,$email,$name,$surname,md5($password),'Hesap Onayı','Hesabınızı Onaylayın');
+                        exit($send);
+                        helper::flashData("statu","danger");
+                        helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
+                        Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
+                        helper::redirect("/login/confirm",["email" => $_POST["email"]]);
+                    }
+                }else{
                     helper::flashData("statu","danger");
-                    helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
-                    Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
-                    helper::redirect("/login/confirm",["email" => $_POST["email"]]);
+                    helper::flashData("message","Bu bilgilere ait kullanıcı var.");
+                    helper::redirect("/main/register");
                 }
             }else{
                 helper::flashData("statu","danger");
-                helper::flashData("message","Bu bilgilere ait kullanıcı var.");
+                helper::flashData("message","Şifreler Uyuşmuyor.");
                 helper::redirect("/main/register");
             }
+
         }
     }
     public function profile()
@@ -73,7 +80,7 @@ class user extends controller
     }
     public function confirmAcount($authenticationCode)
     {
-        $query = $this->model('userModel')->singleAuthenticationCode($authenticationCode);
+        $query = $this->model('userModel')->getUserByAuthCode($authenticationCode);
         if ($query['isAuthenticated']==0)
         {
             $query = $this->model('userModel')->confirmAcount($authenticationCode);

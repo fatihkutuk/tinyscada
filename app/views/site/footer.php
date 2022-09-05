@@ -52,6 +52,7 @@ var nodes = <?=json_encode($params['serinolist']);?>;
 
 </script>
 <script src="<?= DIST_PATH; ?>/js/tinyscada.js"></script>
+<?= helper::flashToastrView("toastr") ?>
 
 </body>
 

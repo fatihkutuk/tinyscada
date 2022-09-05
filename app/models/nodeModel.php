@@ -11,6 +11,26 @@ class nodeModel extends model {
         $query->execute();
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    public function getSettningsBySerialNumber($serialNumber){
+        $query = $this->db->prepare('select t.* FROM node n LEFT JOIN tagpool t ON n.nodeSerialNumber = t.serialNumber WHERE n.nodeSerialNumber = '.$serialNumber.'');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function setTags($title,$birim,$tagName,$serialNumber){
+        $query = $this->db->prepare('update tagpool set tagTitle = ?, tagUnit = ? where tagName = ? and serialNumber = ?');
+        $res = $query->execute(array($title,$birim,$tagName,$serialNumber));
+        return  $res;
+    }
+    public function insertNode($serialNumber,$title){
+        $query = $this->db->prepare('insert into node (userId,nodeSerialNumber, title) values ('.$_SESSION["id"].','.$serialNumber.',"'.$title.'")');
+        $res = $query->execute();
+        return $res;
+    }
+    public function updateNode($serialNumber,$title){
+        $query = $this->db->prepare('update into node set title = '.$title.', set nodeSerialNumber = '.$serialNumber.' ');
+        $res = $query->execute();
+        return $res;
+    }
     public function updateNodeIpBySerialNumber($serialNumber,$localip){
         $_SERVER["REMOTE_ADDR"];
         $query = $this->db->prepare('update node set externalp = "'.$_SERVER["REMOTE_ADDR"].'", localIp = "'.$localip.'" where nodeSerialNumber = '.$serialNumber.'');

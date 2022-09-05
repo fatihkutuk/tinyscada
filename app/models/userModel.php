@@ -20,6 +20,16 @@ class userModel extends model
             return false;
         }
     }
+    public function getUserByAuthCode($confirmHash){
+        $query = $this->db->prepare("select * from user where confirmHash = ?");
+        $query->execute(array($confirmHash));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    public function confirmAcount($authenticationCode){
+        $query = $this->db->prepare("update user set isActive = 1 where confirmHash = ?");
+        $query->execute(array($authenticationCode));
+        return true;
+    }
     public function isExist($tel,$email){
         $query = $this->db->prepare("select * from user where email = ? or tel = ?");
         $query->execute(array($email,$tel));
