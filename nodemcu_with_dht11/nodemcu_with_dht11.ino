@@ -18,7 +18,7 @@ const int do1 = 0;
 #define DHTPIN 2
 #define DHTTYPE DHT11 
 DHT dht(DHTPIN, DHTTYPE); 
-ESP8266WebServer server(80);
+ESP8266WebServer server(5002);
 
 String page = "";
 int chipid = ESP.getChipId();
