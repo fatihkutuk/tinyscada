@@ -123,6 +123,14 @@
                     </p>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12">
+                  <p class=" text-xs">Not: Eğer cihazın web arayüzüne ulaşmak istiyorsanız, cihazın bağlı olduğu modemde dışardan gelen "5002" portunu içerideki 
+                    "<?= $item['localIp'] ?>" ipsinin 5002 portuna yönlendirmeniz gerekmektedir. Bu işlem yapıldıktan sonra <a href="http://<?= $item['externalp']; ?>:5002">http://<?= $item['externalp']; ?>:5002</a>
+                    adresinden cihazın web arayüzüne ulabilirsiniz.
+                  </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
