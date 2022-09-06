@@ -15,7 +15,8 @@ const int di1 = 5; //d1
 const int di2 = 4; //d2
 const int do1 = 0; //d3
 
-#define DHTPIN 2
+#define DHTPIN 2 // d4
+
 #define DHTTYPE DHT11 
 DHT dht(DHTPIN, DHTTYPE); 
 ESP8266WebServer server(5002);
