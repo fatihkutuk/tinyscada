@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- tinyscada için veritabanı yapısı dökülüyor
-CREATE DATABASE IF NOT EXISTS `tinyscada` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `tinyscada`;
+-- fatih_tinyscada için veritabanı yapısı dökülüyor
+CREATE DATABASE IF NOT EXISTS `fatih_tinyscada` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `fatih_tinyscada`;
 
--- tablo yapısı dökülüyor tinyscada.node
+-- tablo yapısı dökülüyor fatih_tinyscada.node
 CREATE TABLE IF NOT EXISTS `node` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL DEFAULT 0,
@@ -30,13 +30,11 @@ CREATE TABLE IF NOT EXISTS `node` (
   `createdDate` datetime NOT NULL DEFAULT current_timestamp(),
   `updatedDate` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- tinyscada.node: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
-INSERT INTO `node` (`id`, `userId`, `title`, `localIp`, `externalp`, `nodeSerialNumber`, `createdDate`, `updatedDate`) VALUES
-	(4, 1, 'Fatih1', '10.10.120.151', '88.248.170.254', 1301909, '2022-08-31 16:34:22', '2022-09-01 16:35:12');
+-- Veri çıktısı seçilmemişti
 
--- tablo yapısı dökülüyor tinyscada.readtags
+-- tablo yapısı dökülüyor fatih_tinyscada.readtags
 CREATE TABLE IF NOT EXISTS `readtags` (
   `serialNumber` int(11) NOT NULL,
   `tagName` varchar(50) NOT NULL,
@@ -45,15 +43,9 @@ CREATE TABLE IF NOT EXISTS `readtags` (
   PRIMARY KEY (`serialNumber`,`tagName`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- tinyscada.readtags: ~5 rows (yaklaşık) tablosu için veriler indiriliyor
-INSERT INTO `readtags` (`serialNumber`, `tagName`, `tagValue`, `readTime`) VALUES
-	(1301909, 'di1', 1, '2022-09-02 16:29:40'),
-	(1301909, 'di2', 1, '2022-09-02 16:29:40'),
-	(1301909, 'do1', 0, '2022-09-02 16:29:40'),
-	(1301909, 'nem', 147.8, '2022-09-02 16:29:40'),
-	(1301909, 'sicaklik', 14.1, '2022-09-02 16:29:40');
+-- Veri çıktısı seçilmemişti
 
--- tablo yapısı dökülüyor tinyscada.tagpool
+-- tablo yapısı dökülüyor fatih_tinyscada.tagpool
 CREATE TABLE IF NOT EXISTS `tagpool` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `serialNumber` int(11) NOT NULL DEFAULT 0,
@@ -62,17 +54,11 @@ CREATE TABLE IF NOT EXISTS `tagpool` (
   `tagUnit` varchar(50) DEFAULT NULL,
   `tagType` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- tinyscada.tagpool: ~5 rows (yaklaşık) tablosu için veriler indiriliyor
-INSERT INTO `tagpool` (`id`, `serialNumber`, `tagName`, `tagTitle`, `tagUnit`, `tagType`) VALUES
-	(16, 1301909, 'sicaklik', 'Sıcaklık', '°C', 8),
-	(17, 1301909, 'nem', 'Bağıl Nem', '%', 8),
-	(18, 1301909, 'di1', 'Dijital Giriş 1', '', 1),
-	(19, 1301909, 'di2', 'Dijital Giriş 2', '', 1),
-	(20, 1301909, 'do1', 'Dijital Çıkış 1', '', 1);
+-- Veri çıktısı seçilmemişti
 
--- tablo yapısı dökülüyor tinyscada.user
+-- tablo yapısı dökülüyor fatih_tinyscada.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '0',
@@ -85,14 +71,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `UpdatedDate` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `confirmHash` tinytext DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- tinyscada.user: ~2 rows (yaklaşık) tablosu için veriler indiriliyor
-INSERT INTO `user` (`id`, `name`, `surname`, `email`, `tel`, `isActive`, `password`, `createdDate`, `UpdatedDate`, `confirmHash`) VALUES
-	(1, 'fatih', 'kütük', 'fatihkutuk@outlook.com', '0', b'1', '5583413443164b56500def9a533c7c70', '2022-08-31 10:02:27', '2022-09-02 16:28:41', NULL),
-	(17, 'fatih kütük', 'kütük', 'fatih.kutuk@envest.com.tr', '05465498182', b'0', 'asdasd', '2022-09-02 18:29:16', NULL, '5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e0baacdb8');
+-- Veri çıktısı seçilmemişti
 
--- tablo yapısı dökülüyor tinyscada.writedtags
+-- tablo yapısı dökülüyor fatih_tinyscada.writedtags
 CREATE TABLE IF NOT EXISTS `writedtags` (
   `serialNumber` int(11) NOT NULL,
   `tagName` varchar(50) NOT NULL DEFAULT '',
@@ -101,10 +84,27 @@ CREATE TABLE IF NOT EXISTS `writedtags` (
   PRIMARY KEY (`serialNumber`,`tagName`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- tinyscada.writedtags: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- Veri çıktısı seçilmemişti
 
--- tetikleyici yapısı dökülüyor tinyscada.node_after_insert
-SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION';
+-- tablo yapısı dökülüyor fatih_tinyscada._counters
+CREATE TABLE IF NOT EXISTS `_counters` (
+  `readtagcount` double DEFAULT NULL,
+  `writetagcount` double DEFAULT NULL,
+  `date` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Veri çıktısı seçilmemişti
+
+-- yöntem yapısı dökülüyor fatih_tinyscada.getReadTags
+DELIMITER //
+CREATE PROCEDURE `getReadTags`(
+	IN `in_serialnumbers` LONGTEXT
+)
+BEGIN SET @s = CONCAT('SELECT rt.*,tp.tagTitle,tp.tagUnit,tp.tagType FROM fatih_tinyscada.readtags rt left join fatih_tinyscada.tagpool tp on tp.tagName=rt.tagName WHERE rt.serialNumber IN (',in_serialnumbers,') and rt.serialNumber = tp.serialNumber '); PREPARE stmt1 FROM @s; EXECUTE stmt1 ; DEALLOCATE PREPARE stmt1; END//
+DELIMITER ;
+
+-- tetikleyici yapısı dökülüyor fatih_tinyscada.node_after_insert
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
 DELIMITER //
 CREATE TRIGGER `node_after_insert` AFTER INSERT ON `node` FOR EACH ROW BEGIN
 	INSERT INTO tagpool (serialNumber,tagName,tagTitle,tagUnit,tagType) 
@@ -121,6 +121,15 @@ CREATE TRIGGER `node_after_insert` AFTER INSERT ON `node` FOR EACH ROW BEGIN
 	
 	INSERT INTO tagpool (serialNumber,tagName,tagTitle,tagUnit,tagType) 
 	VALUES (NEW.nodeSerialNumber,'do1','Dijital Çıkış 1','',1);
+END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
+
+-- tetikleyici yapısı dökülüyor fatih_tinyscada.readtags_after_update
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
+DELIMITER //
+CREATE TRIGGER `readtags_after_update` AFTER INSERT ON `readtags` FOR EACH ROW BEGIN
+	update  _counters SET readtagcount = readtagcount+0.2;
 END//
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
