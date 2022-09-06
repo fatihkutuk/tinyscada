@@ -46,14 +46,20 @@ class user extends controller
             if( $password==$rePassword ){
                 if(!$this->model('userModel')->isExist($tel,$email)){
                     $hash = hash('sha256',$password);
-                    $save = $this->model('userModel')->create($name,$surname,$password,$email,$tel,$hash);
+                    $save = $this->model('userModel')->create($name,$surname,md5($password),$email,$tel,$hash);
                     if($save){
-                        $send = helper::sendAuthMail($hash,$email,$name,$surname,md5($password),'Hesap Onayı','Hesabınızı Onaylayın');
-                        exit($send);
-                        helper::flashData("statu","danger");
-                        helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
-                        Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
-                        helper::redirect("/login/confirm",["email" => $_POST["email"]]);
+                        $send = helper::sendAuthMail($hash,$email,$name,$surname,$password,'Hesap Onayı','Hesabınızı Onaylayın');
+                        if($send){
+                            helper::flashData("statu","danger");
+                            helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
+                            Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
+                            helper::redirect("/",["email" => $_POST["email"]]);
+                        }else{
+                            helper::flashData("statu","danger");
+                            helper::flashData("message",$send);
+                            helper::redirect("/");
+                        }
+
                     }
                 }else{
                     helper::flashData("statu","danger");

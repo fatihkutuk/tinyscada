@@ -130,7 +130,7 @@ class helper extends model
         if (!$mail->Send()) {
             return "Mail gönderilemedi. Hata kodu: " . $mail->ErrorInfo;
         } else {
-            return "Mail gönderildi";
+            return true;
         }
     }
     static function sendResetPasswordMail($authenticationCode, $userMail, $message)
