@@ -60,10 +60,10 @@ class nodes extends controller
             $res = $this->model('nodeModel')->setTags($title, $birim, $tagName, $serialNumber);
             if ($res) {
                 helper::flashToastr("alert alert-success", "Başarılı", "Bilgiler Güncellendi, Panel üzerinden kontrol edebilirsiniz ", 10000);
-                helper::redirect("/nodes");
+                helper::redirect("/nodes/settings/$serialNumber");
             } else {
                 helper::flashToastr("alert alert-danger", "Hata", "Bilgiler Güncellenemedi, sistem yöneticisine danışın ", 10000);
-                helper::redirect("/nodes");
+                helper::redirect("/nodes/settings/$serialNumber");
             }
         }
     }

@@ -61,10 +61,9 @@ function setBool(serino,tagname,e){
     var val = $(e).attr("data-val") == 0 ? 1 : 0;
     do1 = val;
     $(e).css("opacity",0.5);
-    $(e).change(function(event) {
-        console.log("changed")
+    $(e).change(function(event) { 
          $(e).css("opacity",1);
-     });
+    });
     var data = { 
         serialNumber : serino,
         tagName: tagname,

@@ -7,13 +7,13 @@
 #include "DHT.h"   
 
 
-const char* ssid = "fatihktk";
-const char* password = "fthktk179";
+const char* ssid = "Koru1000";
+const char* password = "envest9arge13";
 String scada = "https://tinyscada.com/nodes/saveNodeValue";
 String do1GetEndpoint = "https://tinyscada.com/nodes/tagsForWrite";
-const int di1 = 5;
-const int di2 = 4;
-const int do1 = 0;
+const int di1 = 5; //d1
+const int di2 = 4; //d2
+const int do1 = 0; //d3
 
 #define DHTPIN 2
 #define DHTTYPE DHT11 

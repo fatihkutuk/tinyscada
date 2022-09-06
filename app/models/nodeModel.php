@@ -27,7 +27,7 @@ class nodeModel extends model {
         return $res;
     }
     public function updateNode($serialNumber,$title){
-        $query = $this->db->prepare('update into node set title = '.$title.', set nodeSerialNumber = '.$serialNumber.' ');
+        $query = $this->db->prepare('update node set title = "'.$title.'" where nodeSerialNumber = '.$serialNumber.' ');
         $res = $query->execute();
         return $res;
     }

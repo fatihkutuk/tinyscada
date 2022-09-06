@@ -43,7 +43,7 @@
 
                                         <div class="form-group">
                                             <label>Birim</label>
-                                            <input name="birim" type="text" value="<?=$item['tagUnit']?>" class="form-control" placeholder="Zorunlu" required>
+                                            <input name="birim" type="text" value="<?=$item['tagUnit']?>" class="form-control" placeholder="Zorunlu" >
                                         </div>
                                     </div>
                                     <input name="tagName" type="hidden" value="<?=$item['tagName']?>" class="form-control" placeholder="Zorunlu" required>

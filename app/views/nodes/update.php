@@ -37,6 +37,7 @@
                                             <input name="title" type="text" value="<?=$params['node']['title']?>" class="form-control" placeholder="Zorunlu" required>
                                         </div>
                                     </div>
+                                    <input name="serialNumber" type="hidden" value="<?=$params['node']['nodeSerialNumber']?>" class="form-control" placeholder="Zorunlu" required>
 
 
                                 </div>

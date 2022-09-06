@@ -83,7 +83,7 @@ class helper extends model
         }
         return $html;
     }
-    static function flashToastr($tip, $title, $mesaj, $sure)
+    static function flashToastr($tip,$title, $mesaj, $sure)
     {
 
         $html = "<script>";
