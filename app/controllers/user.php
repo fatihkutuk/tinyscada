@@ -50,7 +50,7 @@ class user extends controller
                     if($save){
                         $send = helper::sendAuthMail($hash,$email,$name,$surname,$password,'Hesap Onayı','Hesabınızı Onaylayın');
                         if($send){
-                            helper::flashData("statu","danger");
+                            helper::flashData("statu","success");
                             helper::flashData("message","Tebrikler! Hesabınız oluşturuldu. Giriş Yapmak için mailinize gelen link üzerinden mailinizi onaylamanız gerekmetedir.
                             Not:MAil Ulaşmadıysa Lütfen Spamları da kontrol ediniz.");
                             helper::redirect("/",["email" => $_POST["email"]]);

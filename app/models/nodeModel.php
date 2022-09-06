@@ -43,7 +43,7 @@ class nodeModel extends model {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     public function getTagValues($serialNoList){
-        $query = $this->db->prepare("CALL `getReadTafs`('$serialNoList')");
+        $query = $this->db->prepare("CALL `getReadTags`('$serialNoList')");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }

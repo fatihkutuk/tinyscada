@@ -8,7 +8,7 @@
             <div class="card-body">
                 <p class="login-box-msg">Oturum Açmalısınız</p>
 
-                <form action="<?=SITE_URL;?>/login/loginControl" method="POST">
+                <form action="<?= SITE_URL; ?>/login/loginControl" method="POST">
                     <div class="input-group mb-3">
                         <input name="userMail" type="text" class="form-control" placeholder="Tiny Kullanıcı Adı">
                         <div class="input-group-append">
@@ -34,26 +34,31 @@
                         <div class="col-8">
                             <a href="/main/register" type="submit" class="btn btn-success btn-block ">Kaydol</a>
                         </div>
-                        <div class="alert alert-<?= @$_SESSION['statu']; ?>">
-                            <?= @$_SESSION['message']; ?>
-                        </div>
-                        <?php unset($_SESSION['statu']); ?>
-                        <?php unset($_SESSION['message']); ?>
+
+
                         <!-- /.col -->
                     </div>
+
                 </form>
 
+            </div>
+            <div class="card-footer">
+                <div class="alert alert-<?= @$_SESSION['statu']; ?>">
+                    <?= @$_SESSION['message']; ?>
+                </div>
+                <?php unset($_SESSION['statu']); ?>
+                <?php unset($_SESSION['message']); ?>
             </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
     </div>
     <!-- jQuery -->
-    <script src="<?= PLUGIN_PATH ;?>/jquery/jquery.min.js"></script>
+    <script src="<?= PLUGIN_PATH; ?>/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="<?= PLUGIN_PATH ;?>/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= PLUGIN_PATH; ?>/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="<?= DIST_PATH ;?>/js/adminlte.min.js"></script>
+    <script src="<?= DIST_PATH; ?>/js/adminlte.min.js"></script>
 </body>
 
 </html>
