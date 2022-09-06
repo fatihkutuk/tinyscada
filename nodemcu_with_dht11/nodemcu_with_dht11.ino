@@ -7,8 +7,8 @@
 #include "DHT.h"   
 
 
-const char* ssid = "Koru1000";
-const char* password = "envest9arge13";
+const char* ssid = "fatihktk";
+const char* password = "fthktk179";
 String scada = "https://tinyscada.com/nodes/saveNodeValue";
 String do1GetEndpoint = "https://tinyscada.com/nodes/tagsForWrite";
 const int di1 = 5;
@@ -18,9 +18,8 @@ const int do1 = 0;
 #define DHTPIN 2
 #define DHTTYPE DHT11 
 DHT dht(DHTPIN, DHTTYPE); 
-ESP8266WebServer server(80);
-unsigned long lastTime = 0;
-unsigned long timerDelay = 5000;
+ESP8266WebServer server(5002);
+
 String page = "";
 int chipid = ESP.getChipId();
 String ipToString(IPAddress ip){
@@ -105,9 +104,10 @@ void setup() {
 }
 
 void loop() {
+  Serial.println(ESP.getChipId());
   Serial.println("di1 : "+String(digitalRead(di1))+" di2 : "+String(digitalRead(di2))+" do2 : "+String(digitalRead(do1))+" nem : "+String(dht.readHumidity())+" sicaklik : "+String(dht.readTemperature()));
   server.handleClient();
   sendData();
   getDo1();
-  delay(100);
+  delay(2000);
 }
