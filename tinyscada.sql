@@ -16,8 +16,8 @@
 
 
 -- fatih_tinyscada için veritabanı yapısı dökülüyor
-CREATE DATABASE IF NOT EXISTS `fatih_tinyscada` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `fatih_tinyscada`;
+CREATE DATABASE IF NOT EXISTS `db_tinyscada` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `db_tinyscada`;
 
 -- tablo yapısı dökülüyor fatih_tinyscada.node
 CREATE TABLE IF NOT EXISTS `node` (
