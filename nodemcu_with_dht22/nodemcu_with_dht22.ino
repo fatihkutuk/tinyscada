@@ -5,24 +5,24 @@
 #include <ESP8266WebServer.h>
 #include <ArduinoJson.h>
 #include "DHT.h"   
-#define DHTTYPE DHT22 
+ 
 #include <Adafruit_Sensor.h>
+#define DHTTYPE DHT22
 
 
-
-const char* ssid = "fatihktk";
-const char* password = "fthktk179";
+const char* ssid = "Koru1000";
+const char* password = "envest9arge13";
 String scada = "https://tinyscada.com/nodes/saveNodeValue";
 String do1GetEndpoint = "https://tinyscada.com/nodes/tagsForWrite";
 
 const int di1 = 5;
 const int di2 = 4;
 const int do1 = 0;
-#define DHTPIN 2    
+  
+uint8_t DHTPin = D8;
 
 
-
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht(DHTPin, DHTTYPE);
 float t = 0.0;
 float h = 0.0;
 ESP8266WebServer server(5002);
