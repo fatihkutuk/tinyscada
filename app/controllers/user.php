@@ -47,6 +47,7 @@ class user extends controller
                 if(!$this->model('userModel')->isExist($tel,$email)){
                     $hash = hash('sha256',$password);
                     $save = $this->model('userModel')->create($name,$surname,md5($password),$email,$tel,$hash);
+                    //exit(var_dump($save));
                     if($save){
                         $send = helper::sendAuthMail($hash,$email,$name,$surname,$password,'Hesap Onayı','Hesabınızı Onaylayın');
                         if($send){

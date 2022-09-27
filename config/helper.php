@@ -108,7 +108,6 @@ class helper extends model
     }
     static function sendAuthMail($authenticationCode, $userMail, $name, $surName, $userPassword, $subject, $message)
     {
-
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
