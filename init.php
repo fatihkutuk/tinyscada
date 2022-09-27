@@ -7,4 +7,5 @@ require_once 'config/default.php';
 require_once 'config/helper.php';
 require_once 'config/sessionManager.php';
 require_once 'core/startUp.php';
+
 ?>
